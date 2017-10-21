@@ -38,11 +38,12 @@
 
 #define TIMEOUT 5000
 using namespace std;
+
 namespace gr {
   namespace fcdproplus {
 
     fcdproplus::sptr
-    fcdproplus::make(const std::string device_name,int unit)
+    fcdproplus::make(const std::string device_name, int unit)
     {
       return gnuradio::get_initial_sptr (new fcdproplus_impl(device_name,unit));
     }
@@ -50,7 +51,7 @@ namespace gr {
     /*
      * The private constructor
      */
-    fcdproplus_impl::fcdproplus_impl(const std::string user_device_name,int unit)
+    fcdproplus_impl::fcdproplus_impl(const std::string user_device_name, int unit)
       : gr::hier_block2("fcdproplus",
                     gr::io_signature::make(0, 0, 0),
                     gr::io_signature::make(1, 1, sizeof (gr_complex)))

@@ -40,7 +40,7 @@ namespace gr {
 
 
     public:
-      fcdproplus_impl(const std::string user_device_name,int unit);
+      fcdproplus_impl(const std::string user_device_name, int unit);
       ~fcdproplus_impl();
       /* Public API functions documented in include/fcdproplus.h */
       void set_freq(float freq);
