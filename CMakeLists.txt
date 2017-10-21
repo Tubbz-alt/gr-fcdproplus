@@ -110,6 +110,17 @@ set(GR_PKG_LIBEXEC_DIR  ${GR_LIBEXEC_DIR}/${CMAKE_PROJECT_NAME})
 set(GRC_BLOCKS_DIR      ${GR_PKG_DATA_DIR}/grc/blocks)
 
 ########################################################################
+# Find gr-fosphor build dependencies
+########################################################################
+
+# Required
+find_package(HIDAPI)
+if(NOT HIDAPI_FOUND)
+  message(FATAL_ERROR "hidapi required to compile gr-fcdproplus")
+endif()
+
+
+########################################################################
 # On Apple only, set install name and use rpath correctly, if not already set
 ########################################################################
 if(APPLE)
@@ -119,7 +130,7 @@ if(APPLE)
             PATH "Library Install Name Destination Directory" FORCE)
     endif(NOT CMAKE_INSTALL_NAME_DIR)
     if(NOT CMAKE_INSTALL_RPATH)
-        set(CMAKE_INSTALL_RPATH
+        set(CMAKE_InNSTALL_RPATH
             ${CMAKE_INSTALL_PREFIX}/${GR_LIBRARY_DIR} CACHE
             PATH "Library Install RPath" FORCE)
     endif(NOT CMAKE_INSTALL_RPATH)

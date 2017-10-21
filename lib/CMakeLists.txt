@@ -22,8 +22,8 @@
 ########################################################################
 include(GrPlatform) #define LIB_SUFFIX
 
-include_directories(${Boost_INCLUDE_DIR})
-link_directories(${Boost_LIBRARY_DIRS})
+include_directories(${Boost_INCLUDE_DIR} ${HIDAPI_INLUCDE_DIR})
+link_directories(${Boost_LIBRARY_DIRS} ${HIDAPI_LIBRARY_DIRS})
 
 list(APPEND fcdproplus_sources
     fcdproplus_impl.cc
@@ -36,7 +36,7 @@ if(NOT fcdproplus_sources)
 endif(NOT fcdproplus_sources)
 
 add_library(gnuradio-fcdproplus SHARED ${fcdproplus_sources})
-target_link_libraries(gnuradio-fcdproplus ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+target_link_libraries(gnuradio-fcdproplus ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES} ${HIDAPI_LIBRARIES})
 set_target_properties(gnuradio-fcdproplus PROPERTIES DEFINE_SYMBOL "gnuradio_fcdproplus_EXPORTS")
 
 if(APPLE)
@@ -70,6 +70,7 @@ target_link_libraries(
   test-fcdproplus
   ${GNURADIO_RUNTIME_LIBRARIES}
   ${Boost_LIBRARIES}
+  ${HIDAPI_LIBRARIES}
   ${CPPUNIT_LIBRARIES}
   gnuradio-fcdproplus
 )
