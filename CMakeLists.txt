@@ -151,7 +151,7 @@ find_package(Doxygen)
 # caps such as FILTER or FFT) and change the version to the minimum
 # API compatible version required.
 
-# This is well hidden…
+# This was well hidden.
 set(GR_REQUIRED_COMPONENTS RUNTIME PMT BLOCKS AUDIO)
 
 find_package(Gnuradio "3.7.2" REQUIRED)
